@@ -22,6 +22,9 @@ inputs:
   tags:
     description: 'Determines if --tags is used'
     required: false
+  extra_flags:
+    description: 'Any custom flags to append to push command sent as string'
+    required: false
   directory:
     description: 'Directory to change to before pushing.'
     required: false
