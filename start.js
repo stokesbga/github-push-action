@@ -41,7 +41,7 @@ const trim = (value, charlist) => trimLeft(trimRight(value, charlist));
 
 const main = async () => {
     let branch = process.env.INPUT_BRANCH;
-    let extra_flags = process.env.INPUT_EXTRA_FLAGS;
+    let extra_flag = process.env.INPUT_EXTRA_FLAG;
     const repository = trim(process.env.INPUT_REPOSITORY || process.env.GITHUB_REPOSITORY);
     if (!branch) {
         const headers = {
@@ -56,7 +56,7 @@ const main = async () => {
             ...process.env,
             INPUT_BRANCH: branch,
             INPUT_REPOSITORY: repository,
-            INPUT_EXTRA_FLAGS: extra_flags
+            INPUT_EXTRA_FLAGS: extra_flag
         }
     });
 };

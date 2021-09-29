@@ -3,7 +3,7 @@ set -e
 
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
-INPUT_EXTRA_FLAGS=${INPUT_EXTRA_FLAGS:-false}
+INPUT_EXTRA_FLAG=${INPUT_EXTRA_FLAG:-''}
 INPUT_DIRECTORY=${INPUT_DIRECTORY:-'.'}
 _FORCE_OPTION=''
 REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
@@ -22,12 +22,12 @@ if ${INPUT_TAGS}; then
     _TAGS='--tags'
 fi
 
-if ${INPUT_EXTRA_FLAGS}; then
-    _EXTRA_FLAGS=$INPUT_EXTRA_FLAGS
+if [ -n "$INPUT_EXTRA_FLAG" ]; then
+    _EXTRA_FLAG="--$INPUT_EXTRA_FLAG"
 fi
 
 cd ${INPUT_DIRECTORY}
 
 remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
 
-git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS $_EXTRA_FLAGS;
+git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS $_EXTRA_FLAG;

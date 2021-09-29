@@ -11,8 +11,8 @@ inputs:
     default: ${{ github.token }}
   repository:
     description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
-    default: ''
     required: false
+    default: ''
   branch:
     description: 'Destination branch to push changes'
     required: false
@@ -22,9 +22,10 @@ inputs:
   tags:
     description: 'Determines if --tags is used'
     required: false
-  extra_flags:
-    description: 'Any custom flags to append to push command sent as string'
+  extra_flag:
+    description: 'Any custom flag to add to push command (without "--")'
     required: false
+    default: ''
   directory:
     description: 'Directory to change to before pushing.'
     required: false
