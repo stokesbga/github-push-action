@@ -4,6 +4,7 @@ set -e
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
 INPUT_EXTRA_FLAG=${INPUT_EXTRA_FLAG:-''}
+REBASE=${REBASE:-false}
 INPUT_DIRECTORY=${INPUT_DIRECTORY:-'.'}
 _FORCE_OPTION=''
 REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
@@ -29,5 +30,7 @@ fi
 cd ${INPUT_DIRECTORY}
 
 remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
-
+if ${REBASE}; then
+    git pull --rebase
+fi
 git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS $_EXTRA_FLAG;

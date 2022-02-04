@@ -1,35 +1,39 @@
-name: 'GitHub Push'
-description: 'Pushing to GitHub repository local changes'
-author: 'ad-m'
+name: "GitHub Push"
+description: "Pushing to GitHub repository local changes"
+author: "ad-m"
 branding:
   icon: upload-cloud
   color: green
 inputs:
   github_token:
-    description: 'GitHub token or PAT token'
+    description: "GitHub token or PAT token"
     required: true
     default: ${{ github.token }}
   repository:
-    description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
+    description: "Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})"
     required: false
-    default: ''
+    default: ""
   branch:
-    description: 'Destination branch to push changes'
+    description: "Destination branch to push changes"
     required: false
   force:
-    description: 'Determines if force push is used'
+    description: "Determines if force push is used"
     required: false
   tags:
-    description: 'Determines if --tags is used'
+    description: "Determines if --tags is used"
     required: false
   extra_flag:
     description: 'Any custom flag to add to push command (without "--")'
     required: false
-    default: ''
-  directory:
-    description: 'Directory to change to before pushing.'
+    default: ""
+  rebase:
+    description: "Do rebase before pushing? Default is false"
     required: false
-    default: '.'
+    default: false
+  directory:
+    description: "Directory to change to before pushing."
+    required: false
+    default: "."
 runs:
-  using: 'node12'
-  main: 'start.js'
+  using: "node12"
+  main: "start.js"
