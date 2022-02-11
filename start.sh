@@ -31,8 +31,6 @@ cd ${INPUT_DIRECTORY}
 
 remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
 if ${REBASE}; then
-    git pull "${remote_repo}" master
-    git checkout -b ci-tmp-push-branch
-    git rebase master
+    git pull "${remote_repo}" master --rebase
 fi
 git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS $_EXTRA_FLAG;
