@@ -30,6 +30,10 @@ inputs:
     description: "Do rebase before pushing? Default is false"
     required: false
     default: false
+  rebase_branch:
+    description: "Remote branch to rebase from. Default is master"
+    required: false
+    default: master
   directory:
     description: "Directory to change to before pushing."
     required: false

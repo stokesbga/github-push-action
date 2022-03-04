@@ -51,6 +51,7 @@ const main = async () => {
   let branch = process.env.INPUT_BRANCH;
   let extra_flag = process.env.INPUT_EXTRA_FLAG;
   let rebase = process.env.INPUT_REBASE;
+  let rebase_branch = process.env.INPUT_REBASE_BRANCH;
   const repository = trim(
     process.env.INPUT_REPOSITORY || process.env.GITHUB_REPOSITORY
   );
@@ -72,6 +73,7 @@ const main = async () => {
       INPUT_REPOSITORY: repository,
       INPUT_EXTRA_FLAGS: extra_flag,
       REBASE: rebase,
+      REBASE_BRANCH: rebase_branch,
     },
   });
 };
